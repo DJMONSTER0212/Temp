@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.json());
 const userRoutes = require('./routes/userRoutes')
+const resultRoutes = require('./routes/resultRoutes')
 morgan('tiny')
 const port = 3000
 
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user',userRoutes)
-// app.use('/api/results',userRoutes)
+app.use('/api/results',resultRoutes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

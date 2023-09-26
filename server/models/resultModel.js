@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 
 const resultSchema = mongoose.Schema({
+    examName:{
+        type: String,
+        required : true
+    },
     mathsMarks: {
         type: Number,
         required: true

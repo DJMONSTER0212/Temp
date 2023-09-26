@@ -58,7 +58,15 @@ const loginUser = async (req,res) =>{
             throw new Error("User with this Roll number Doesn't exist")
         }
 
-        
+        const result  = await bcrypt.compare(password,existingUser.password);
+        if(!result){
+            res.status(400)
+            throw new Error("Incorrect Credentials")
+        }
+        else {
+            res.send({status : 200, userId : existingUser._id});
+        }
+
 
     } catch (error) {
         console.log(error)
