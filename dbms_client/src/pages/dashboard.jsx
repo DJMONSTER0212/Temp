@@ -9,6 +9,11 @@ const Dashboard = () => {
     const [name, setName] = useState('John');
     const f = async () => {
         toast.success("Logged in Successfully");
+        try {
+            const user = await axios.get
+        } catch (error) {
+
+        }
     }
     useEffect(() => {
         f()

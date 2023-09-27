@@ -74,5 +74,19 @@ const loginUser = async (req,res) =>{
     }
 }
 
+const getUser = async (req,res)=>{
+    try {
+        const {userId} = req.params;
+        const user = await User.findById(userId);
+        if(!user){
+            return res.status(404).json({message : "User not found"})
+        }
+        else {
+            return res.status(200).send(user);
+        }
+    } catch (error) {
+        return res.status(500).json({message:"Internal Server Error at getUser"});
+    }
+}
 
-module.exports = { createUser,loginUser }
+module.exports = { createUser,loginUser, getUser }
